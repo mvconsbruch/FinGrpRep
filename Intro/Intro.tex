@@ -85,11 +85,19 @@ $\bigwedge(V)$ under $H$. One quickly finds:
         \rangle.$
 \end{itemize}
 Now Noether's degree bound steps in and states that these elements generate
-$\bigwedge(V)$! \red{Maybe it would be cool to verify this without Noether's degree
-bound in this situation.}
+$\bigwedge(V)$! But note that in this situation, it is feasible to verify this 
+by hand. Only the degree $3$ and degree $4$ pieces are left, and these can be 
+explicitely calculated as well. For example, the only (up to factor) 
+$H$-invariant piece of degree $4$ is given by $x_1 x_2 x_3 x_4$. One quickly
+verifies that 
+\begin{equation*}
+    x_1 x_2 x_3 x_4 = \frac 12 (x_1 x_2 + x_3 x_4)^2,
+\end{equation*}
+so this lies in some subring generated in degree $2$!
 
 \textbf{Example 3.} 
-As it turns out, Noether's bound is false for general non-commutative algebras. 
+As it turns out, Noether's bound is false for general graded non-commutative algebras
+with degree-preserving action of a finite group $G$.
 Now take the algebra $R = K\langle x,y \rangle/(xy+yx)$.
 Let $G = \Z/2\Z$ and consider the action of $G$ on $R$ that swaps $x$ and $y$. Now let's
 take a look at the invariants. 
