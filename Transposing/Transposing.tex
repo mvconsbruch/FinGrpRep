@@ -169,16 +169,42 @@ We first talk a bit about partitions.
 \end{defi}
 \begin{defi}[Young Diagrams]
     Let $l_1, \dots, l_r$ be a decending sequence of (positive) natural numbers,
-    which is the same as a partition of $k = \sum l_i$. The associated Young diagram
-    is the following alignment of boxes.
-    \red{IMAGE} 
-    Note that any Young diagram can be transposed, which yields a new partition
-    $\lambda^\dagger \pof k$.
+    which is the same as a partition of $k = \sum l_i$. 
+    The associated Young diagram is a certain alignment of boxes, with
+    $l_1$ boxes in the first row, $l_2$ boxes in the second, and so on. 
+    Here are a few examples.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=8cm]{youngdiagram.jpeg}
+        \caption{Examples for young diagrams associated to partitions.}
+    \end{figure}
+\end{defi}
+One easily checks that partitions of an integer $k$ correspond one-to-one to
+Young diagrams with $k$ boxes.
+There is a involution on the set of Young diagrams, given by \emph{transposing}
+the diagram. This yields an involution on the set of partitions.
+\begin{defi}[Transpose partition]
+    Given a partition $\lambda = (l_1 \geq l_2 \geq \dots \geq l_r)$, the 
+    \emph{transpose partition} is given by $\lambda^\dagger = 
+    (l^\dagger_1 \geq l^\dagger_2 \geq \dots \geq l^\dagger_r)$, where
+    \begin{equation*}
+        l^\dagger_i = \# \{j \mid l_j \geq i\}.
+    \end{equation*}
+    This makes much more sense in terms of Young diagrams.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=10cm]{transpose.jpeg}
+        \caption{Example of a transpose partition}
+    \end{figure}
 \end{defi}
 
 
-\begin{thm}[Structure of $\GPoly$, \cite{macdonald1998symmetric}]
-    The category $\GPoly$ is abelian and semisimple. The simple objects are indexed
+We care about partitions because they are in natural (whatever this means here)
+bijection with the "fundamental building blocks" of $\GPoly$.
+
+\begin{thm}[Structure of $\GPoly$, \cite{macdonald1998symmetric}, \cite{sam2012introduction}]
+    The category $\GPoly$ is an abelian and semisimple tensor category. The
+    simple objects are indexed
     by partitions: For each integer $k$ and each partition $\lambda$ of $k$, there 
     is a \emph{Schur-functor} $S_\lambda$, which is a homogenous polynomial functor
     of degree $k$.
@@ -192,9 +218,12 @@ example, the category of $S_*$-representations (with objects $(V_n)_{n \in \N}$,
 $V_n$ is a representation of $S_n$) is equivalent to $\GPoly$. For more on this,
 see \cite{sam2012introduction}.
 
-\textbf{Example.} The functors $\Sym^k$ and $\bigwedge{}^k$ are Schur-functors! 
-The functor $\Sym^k$ belongs to the partition $(k)$, the functor
-$\bigwedge{}^k$ belongs to $(1,\dots, 1)$.
+The reason this is interesting for us is that the functors $\Sym^k$ and
+$\bigwedge{}^k$ are Schur-functors! 
+Even better, the functor $\Sym^k$ belongs to the partition $(k)$, the functor
+$\bigwedge{}^k$ belongs to $(1,\dots, 1)$. These partitions are mutual transpose 
+of one another, which is a deep connection between $\Sym$ and $\bigwedge$, a lot 
+deeper than the list of similarities we found before.
 
 One might hope that transposition of partitions somehow descents to 
 a transposition operation on $\GPoly$. This hope is fulfilled!
@@ -213,8 +242,8 @@ that we only have to apply $\Omega$ in order to obtain the statement for
 $I'(\cA_G)$:
 \begin{prop}(\cite[Proposition 6.1]{Gandini2019ResOfIdeals})
     If $\cR \in \GPoly$ is an algebra object and $\cM$ is a $\cR$-module object
-    generated of regularity $\leq t$, then $\Omega(\cM)$ is generated in degree 
-    $\leq t$. 
+    "of regularity $\leq t$",\footnote{Again, this needs a suitable adaptation of \emph{regularity} in this setting. We won't go into this here.} then $\Omega(\cM)(V)$ is generated in degree 
+    $\leq t$ over $\cR(V)$ for every $V \in \FinVec$. 
 \end{prop}
 Here again we couldn't get around \textit{regularity}. We need a final lemma to
 conclude.
@@ -227,6 +256,11 @@ conclude.
     $\cI_\cA'$ as some Kernels that get mapped into one another.}
 \end{proof}
 
+It can be shows that the functor $\cI_{\cA}$ is of regularity $\leq t$ if
+$\cA$ is a subspace arrangement of $t$ subspaces. Using the previous two 
+results, this shows that $I'(\cA) = \cI'_{\cA}(K)$ is generated over $\bigwedge(V)$
+in degree $\leq t$. Applying this result to the subspace arrangement 
+associated with the action of $G$ on $V$, we obtain theorem \ref{thm:newcrux}.
 This concludes the proof of the subspace arrangement theorem, which also
 finishes the proof of Noether's degree bound for the exterior algebra.
 \end{document}
